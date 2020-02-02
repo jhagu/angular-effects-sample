@@ -13,7 +13,7 @@ export class UserService {
 
   getUsers() {
     return this.http
-        .get(`${this.url}/users?per_page=6`)
+        .get(`${this.url}/users?per_page=12`)
         // tslint:disable-next-line: no-string-literal
         .pipe(map((res) => res['data']));
   }
