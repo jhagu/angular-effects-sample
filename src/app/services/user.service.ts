@@ -17,4 +17,11 @@ export class UserService {
         // tslint:disable-next-line: no-string-literal
         .pipe(map((res) => res['data']));
   }
+
+  getUserById(id: string) {
+    return this.http
+        .get(`${this.url}/users/${id}`)
+        // tslint:disable-next-line: no-string-literal
+        .pipe(map((res) => res['data']));
+  }
 }

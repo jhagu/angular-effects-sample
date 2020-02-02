@@ -1,36 +1,36 @@
 import { User } from 'src/app/models/user.model';
-import * as fromUsersActions from '../actions';
+import * as fromUserActions from '../actions';
 
-export interface UsersState {
-  users: User[];
+export interface UserState {
+  user: User;
   loading: boolean;
   loaded: boolean;
   error: any;
 }
 
-const initialState: UsersState = {
-  users: [],
+const initialState: UserState = {
+  user: null,
   loading: false,
   loaded: false,
   error: null
 };
 
-export const usersReducer = (state = initialState, action: fromUsersActions.UsersActions): UsersState => {
+export const userReducer = (state = initialState, action: fromUserActions.UserActions): UserState => {
   switch (action.type) {
-    case fromUsersActions.LOAD_USERS:
+    case fromUserActions.LOAD_USER:
       return {
         ...state,
         loading: true,
         error: null
       };
-    case fromUsersActions.LOAD_USERS_SUCCESS:
+    case fromUserActions.LOAD_USER_SUCCESS:
       return {
         ...state,
         loading: false,
         loaded: true,
-        users: [...action.users]
+        user: {...action.user}
       };
-    case fromUsersActions.LOAD_USERS_FAIL:
+    case fromUserActions.LOAD_USER_FAIL:
       return {
         ...state,
         loading: false,

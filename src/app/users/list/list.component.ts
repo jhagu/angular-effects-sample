@@ -13,12 +13,21 @@ import * as Actions from '../../store/actions';
 })
 export class ListComponent implements OnInit {
 
+  loading: boolean;
   users: User[] = [];
+  error: any;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.dispatch(new Actions.LoadUsers());
-  }
+    this.store
+      .select('users')
+      .subscribe( res => {
+        this.users = res.users;
+        this.loading = res.loading;
+        this.error = res.error;
+      });
 
+    this.store.dispatch( new Actions.LoadUsers());
+  }
 }

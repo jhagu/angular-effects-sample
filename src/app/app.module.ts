@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 
 //  NGRX
 import { StoreModule } from '@ngrx/store';
-import { appReducers } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { appReducers } from './store/app.reducer';
+import { effectsArray } from './store/effects';
 
 //  Custom Modules
 import { SharedModule } from './shared/shared.module';
@@ -17,6 +18,8 @@ import { UsersModule } from './users/users.module';
 
 //  Environments
 import { environment } from '../environments/environment.prod';
+
+
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { environment } from '../environments/environment.prod';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot(effectsArray),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
