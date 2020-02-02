@@ -15,7 +15,7 @@ const initialState: UserState = {
   error: null
 };
 
-export const userReducer = (state = initialState, action: fromUserActions.UserActions): UserState => {
+export function userReducer(state = initialState, action: fromUserActions.UserActions): UserState {
   switch (action.type) {
     case fromUserActions.LOAD_USER:
       return {
@@ -44,9 +44,4 @@ export const userReducer = (state = initialState, action: fromUserActions.UserAc
     default:
       return state;
   }
-};
-
-
-
-
-
+}
